@@ -9,6 +9,14 @@
   <body>
     <canvas id="canvas"></canvas>
     <script type="text/javascript">
+      const el = document.getElementById("canvas");
+      el.width = 600;
+      el.height = 600;
+      const ctx = el.getContext("2d");
+      ctx.fillStyle = "red";
+      ctx.fillRect(10, 10, 100, 100);
+      ctx.fillStyle = "blue";
+      ctx.fillRect(150, 150, 100, 100);
     </script>
   </body>
 </html>
