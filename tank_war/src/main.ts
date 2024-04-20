@@ -110,3 +110,28 @@ for (let i = 0; i <= 1000; i++) {
     ctx7.fillRect(Math.random()*el.width, Math.random()*el.height, 1, 1)
   }
 }
+
+// 随机色块
+const el8 = document.getElementById("canvas8")! as HTMLCanvasElement;
+const ctx8 = el8.getContext("2d");
+const colors = ['#00ff', '#ff0000', '#00ff00', '#ffff00', '#00ffff', '#ff00ff', '#887EA0', '#2E5378', '#EB943A', '#CA3C75']
+for (let i = 0; i <= 60; i++) {
+  if (ctx8) {
+    ctx8.beginPath()
+    const color = colors[Math.floor(Math.random() * colors.length)]
+    ctx8.fillStyle = color
+    ctx8.arc(Math.random()*el.width, Math.random()*el.height, Math.random() * 10 + 2, 0, 2 * Math.PI)
+    ctx8.fill() 
+  }
+}
+
+// 绘制文字
+const el9 = document.getElementById("canvas9")! as HTMLCanvasElement;
+const ctx9 = el9.getContext("2d");
+if (ctx9) {
+  ctx9.fillStyle = '#000'
+  ctx9.fillRect(0, 0, el9.width, el9.height)
+  ctx9.font = 'bold 50px Arial'
+  ctx9.fillStyle = 'orange'
+  ctx9.fillText('Tank War', 10, 100)
+}
