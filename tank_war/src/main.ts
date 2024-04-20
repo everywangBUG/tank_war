@@ -96,3 +96,17 @@ img1.onload = () => {
 const scale = (img: HTMLImageElement, el: HTMLCanvasElement) => {
   return Math.min(el.width /  img.naturalWidth, el.height / img.naturalHeight)
 }
+
+// 绘制随机色块
+const el7 = document.getElementById("canvas7")! as HTMLCanvasElement;
+const ctx7 = el7.getContext("2d");
+if (ctx7) {
+  ctx7.fillStyle = '#000'
+  ctx7.fillRect(0, 0, el7.width, el7.height)
+}
+for (let i = 0; i <= 1000; i++) {
+  if (ctx7) {
+    ctx7.fillStyle = 'white'
+    ctx7.fillRect(Math.random()*el.width, Math.random()*el.height, 1, 1)
+  }
+}
