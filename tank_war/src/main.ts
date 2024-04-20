@@ -63,3 +63,36 @@ if (ctx4) {
   ctx4.lineWidth = 10;
   ctx4.strokeRect(50, 50, 100, 100)
 }
+
+// 在canvas上面绘制图片
+const el5 = document.getElementById("canvas5")! as HTMLCanvasElement;
+el5.width = 300;
+el5.height = 300;
+const ctx5 = el5.getContext("2d");
+const img = new Image()
+img.src = '../src/assets/cat.jpg';
+img.onload = () => {
+  if (ctx5) {
+    const pattern = ctx5.createPattern(img, 'repeat')!;
+    ctx5.fillStyle = pattern;
+    ctx5.fillRect(0, 0, 300, 300);
+  }
+}
+
+// 在canvas放图片，根据canvas的宽高进行缩放
+const el6 = document.getElementById("canvas6")! as HTMLCanvasElement;
+const ctx6 = el6.getContext("2d");
+ctx6?.fillRect(0, 0, el6.width, el6.height)
+const img1 = new Image()
+img1.src = '../src/assets/cat.jpg';
+img1.onload = () => {
+  if (ctx6) {
+    el6.width = img1.naturalWidth * scale(img1, el6);
+    el6.height = img1.naturalHeight * scale(img1, el6);
+    ctx6.drawImage(img1, 0, 0, el6.width, el6.height)
+  }
+}
+
+const scale = (img: HTMLImageElement, el: HTMLCanvasElement) => {
+  return Math.min(el.width /  img.naturalWidth, el.height / img.naturalHeight)
+}
