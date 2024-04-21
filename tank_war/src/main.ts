@@ -5,14 +5,20 @@ class BlackBoard {
       private ctx = el.getContext("2d")!,
       private width : number = el.width,
       private height: number = el.height,
+      private btn: HTMLButtonElement = document.createElement("button"),
+      private bgColor = 'black',
+      private lineColor = 'white'
     ) {
       this.init()
       this.bindEvent()
     }
     
     private init() {
-      this.ctx.fillStyle = "black"
+      this.ctx.fillStyle = this.bgColor
       this.ctx?.fillRect(0, 0, this.width, this.height)
+      this.btn.textContent = '清屏'
+      this.btn.style.marginTop = '10px'
+      this.el.insertAdjacentElement('afterend', this.btn)
     }
 
     private bindEvent() {
@@ -21,7 +27,7 @@ class BlackBoard {
       this.el.addEventListener("mousedown", () => {
         // 绘制
           this.ctx.beginPath()
-          this.ctx.strokeStyle = "white"
+          this.ctx.strokeStyle = this.lineColor
           this.el.addEventListener('mousemove', callback)
           // 鼠标松开结束划线
           // 使用document，防止事件冒泡在canvas外部松开不能移除事件
@@ -35,6 +41,23 @@ class BlackBoard {
       this.ctx.lineTo(e.offsetX, e.offsetY)
       this.ctx.stroke()
     }
+
+    // 清屏操作
+    public clear() {
+      this.btn.addEventListener('click', () => {
+        this.ctx.fillStyle = this.bgColor
+        this.ctx.fillRect(0, 0, this.width, this.height)
+      })
+      return this
+    }
+
+    public setBgColor(color: string) {
+      this.bgColor = color
+      this.ctx.fillStyle = color
+      this.ctx.fillRect(0, 0, this.width, this.height)
+      return this
+    }
 }
 
 const instance = new BlackBoard()
+instance.clear().setBgColor('green')
