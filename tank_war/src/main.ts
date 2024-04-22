@@ -57,7 +57,24 @@ class BlackBoard {
       this.ctx.fillRect(0, 0, this.width, this.height)
       return this
     }
+
+    public setLineColor() {
+      const colors = ['white', 'red', 'blue', 'green', 'black', 'yellow', 'pink', 'skyblue']
+      const container = document.createElement('div')
+      container.classList.add('color-container')
+      colors.forEach(color => {
+        const item = document.createElement('div')
+        item.classList.add('color-item')
+        item.style.backgroundColor = color
+        container.insertAdjacentElement('beforeend', item)
+        item.addEventListener('click', () => {
+          this.lineColor = color
+        })
+        this.btn.insertAdjacentElement('afterend', container)
+      })
+      return this
+    }
 }
 
 const instance = new BlackBoard()
-instance.clear().setBgColor('green')
+instance.clear().setBgColor('green').setLineColor('red')
