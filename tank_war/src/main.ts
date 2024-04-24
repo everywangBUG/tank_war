@@ -5,7 +5,7 @@ class BlackBoard {
       private ctx = el.getContext("2d")!,
       private width : number = el.width,
       private height: number = el.height,
-      private btn: HTMLButtonElement = document.createElement("button"),
+      private buttons = document.getElementById('buttons'),
       private bgColor = 'black',
       private lineColor = 'white'
     ) {
@@ -16,9 +16,6 @@ class BlackBoard {
     private init() {
       this.ctx.fillStyle = this.bgColor
       this.ctx?.fillRect(0, 0, this.width, this.height)
-      this.btn.textContent = '清屏'
-      this.btn.style.marginTop = '10px'
-      this.el.insertAdjacentElement('afterend', this.btn)
     }
 
     private bindEvent() {
@@ -44,7 +41,11 @@ class BlackBoard {
 
     // 清屏操作
     public clear() {
-      this.btn.addEventListener('click', () => {
+      const clearBtn = document.createElement("button")
+      clearBtn.textContent = '清屏'
+      clearBtn.style.marginTop = '10px'
+      this.buttons?.insertAdjacentElement('beforeend', clearBtn)
+      clearBtn.addEventListener('click', () => {
         this.ctx.fillStyle = this.bgColor
         this.ctx.fillRect(0, 0, this.width, this.height)
       })
@@ -59,22 +60,41 @@ class BlackBoard {
     }
 
     public setLineColor() {
-      const colors = ['white', 'red', 'blue', 'green', 'black', 'yellow', 'pink', 'skyblue']
+      const colors = ['white', 'red', 'blue', 'green', 'yellow', 'pink', 'skyblue']
       const container = document.createElement('div')
       container.classList.add('color-container')
       colors.forEach(color => {
         const item = document.createElement('div')
         item.classList.add('color-item')
         item.style.backgroundColor = color
-        container.insertAdjacentElement('beforeend', item)
+        item.style.border = `1px solid orange`
+        container.insertAdjacentElement('afterbegin', item)
         item.addEventListener('click', () => {
           this.lineColor = color
         })
-        this.btn.insertAdjacentElement('afterend', container)
+        this.el.insertAdjacentElement('afterend', container)
       })
       return this
     }
+
+    public erase() {
+      const eraseBtn = document.createElement("button")
+      eraseBtn.textContent = '橡皮擦'
+      eraseBtn.style.marginTop = '10px'
+      this.buttons?.insertAdjacentElement('beforeend', eraseBtn)
+      eraseBtn.addEventListener('click', () => {
+        console.log(this.bgColor, '999')
+        this.lineColor = this.bgColor
+        this.ctx.lineWidth = 10
+      })
+      return this
+    }
+
+    public short() {}
 }
 
 const instance = new BlackBoard()
-instance.clear().setBgColor('green').setLineColor('red')
+instance.clear()
+instance.setBgColor('black')
+instance.setLineColor()
+instance.erase()

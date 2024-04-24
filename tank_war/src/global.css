@@ -17,3 +17,7 @@ body {
   border-radius: 50%;
   cursor: pointer;
 }
+
+#buttons button {
+  margin-right: 15px;
+}
