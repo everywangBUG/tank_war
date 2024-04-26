@@ -3,9 +3,8 @@ body {
   height: 100vh;
   justify-content: center;
   align-items: center;
-  background: #000;
 }
 
 #app {
-  background: red;
+  background: #000;
 }
