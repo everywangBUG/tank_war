@@ -1,4 +1,4 @@
-import CanvasAbstract from "./canvas"
+import CanvasAbstract from "./canvasAbstract"
 
 export default class Tank extends CanvasAbstract {
 }

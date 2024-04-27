@@ -1,11 +1,18 @@
+import straw from './statics/images/straw/straw.png'
+
 export default {
   root: {
     width: 900,
     height: 600,
   },
-  canvas: {
-    width: 500,
-    height: 300,
-    backgroundColor: '#afffff',
+  model: {
+    width: 50,
+    height: 50,
+  },
+  images: {
+    straw,
+    ab: straw,
+    cd: straw,
+    ef: straw
   }
 }
