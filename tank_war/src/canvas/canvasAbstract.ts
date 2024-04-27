@@ -1,4 +1,5 @@
 import config from "../config"
+import { images,imagePromise } from "../service/image"
 
 export default class CanvasAbstract {
   constructor(
@@ -7,7 +8,7 @@ export default class CanvasAbstract {
     protected ctx = canvas.getContext('2d')!,
   ) {
     this.createCanvas()
-    this.drawStraw()
+    this.drawStraw(config.straw.num)
   }
 
   protected createCanvas() {
@@ -18,13 +19,12 @@ export default class CanvasAbstract {
     this.rootEl.insertAdjacentElement('afterbegin', this.canvas)
   }
 
-  protected drawStraw() {
-    const imgEl = document.createElement('img')
-    imgEl.src = config.images.straw
+  protected async drawStraw(num: number) {
     const { x, y } = this.position()
-    imgEl.onload = () => {
-      this.ctx.drawImage(imgEl, x, y, config.model.width, config.model.height)
-    }
+    await this.bootStrap()
+    Array.from({ length: num }).forEach(() => {
+      this.ctx.drawImage(images.get('straw')!, x, y, config.model.width, config.model.height)
+    })
   }
 
   protected position() {
@@ -33,4 +33,9 @@ export default class CanvasAbstract {
       y: 220,
     }
   }
+
+  protected async bootStrap() {
+    await Promise.all(imagePromise)
+  }
+  
 }

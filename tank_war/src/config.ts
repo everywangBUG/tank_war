@@ -14,5 +14,8 @@ export default {
     ab: straw,
     cd: straw,
     ef: straw
+  },
+  straw: {
+    num: 20,
   }
 }
