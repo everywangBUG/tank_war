@@ -20,17 +20,36 @@ export default class CanvasAbstract {
   }
 
   protected async drawStraw(num: number) {
-    const { x, y } = this.position()
     await this.bootStrap()
-    Array.from({ length: num }).forEach(() => {
+    this.positionCollection(num).forEach(({x, y}) => {
       this.ctx.drawImage(images.get('straw')!, x, y, config.model.width, config.model.height)
     })
   }
 
+  protected positionCollection(num: number) {
+    const collection: {x: number, y: number}[] = []
+    for (let i = 0; i < num; i++) {
+      while(true) {
+        const position = this.position()
+        // 相邻横坐标相减的绝对值不能小于config.images.width，相邻纵坐标相减的绝对值不能小于config.images.height
+        const exits = collection.some(item => {
+          const x = Math.abs(item.x - position.x)
+          const y = Math.abs(item.y - position.y)
+          return x < config.model.width / 2 || y < config.model.height / 2
+        })
+        if (!exits) {
+          collection.push(position)
+          break
+        }
+      }
+    }
+    return collection
+  }
+
   protected position() {
     return {
-      x: 220,
-      y: 220,
+      x: Math.floor((Math.random()* (config.root.width / config.model.width)) * config.model.width),
+      y: Math.floor((Math.random()* (config.root.height / config.model.height)) * config.model.height),
     }
   }
 

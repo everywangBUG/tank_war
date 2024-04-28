@@ -2,8 +2,8 @@ import straw from './statics/images/straw/straw.png'
 
 export default {
   root: {
-    width: 900,
-    height: 600,
+    width: 1200,
+    height: 800,
   },
   model: {
     width: 50,
@@ -16,6 +16,6 @@ export default {
     ef: straw
   },
   straw: {
-    num: 20,
+    num: 30,
   }
 }
