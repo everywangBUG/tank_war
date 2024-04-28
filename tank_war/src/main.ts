@@ -1,7 +1,7 @@
 import './style.scss'
 import 'normalize.css'
 import config from './config'
-import './canvas/straw'
+import './model/straw'
 import './service/image'
 
 const app = document.querySelector<HTMLDivElement>('#app')!

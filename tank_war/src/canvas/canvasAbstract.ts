@@ -8,7 +8,6 @@ export default class CanvasAbstract {
     protected ctx = canvas.getContext('2d')!,
   ) {
     this.createCanvas()
-    this.drawStraw(config.straw.num)
   }
 
   protected createCanvas() {
@@ -19,10 +18,11 @@ export default class CanvasAbstract {
     this.rootEl.insertAdjacentElement('afterbegin', this.canvas)
   }
 
-  protected async drawStraw(num: number) {
+  protected async drawStraw(num: number, model: any) {
     await this.bootStrap()
-    this.positionCollection(num).forEach(({x, y}) => {
-      this.ctx.drawImage(images.get('straw')!, x, y, config.model.width, config.model.height)
+    this.positionCollection(num).forEach((position) => {
+      new model(this.ctx, position)
+      // this.ctx.drawImage(images.get('straw')!, x, y, config.model.width, config.model.height)
     })
   }
 
