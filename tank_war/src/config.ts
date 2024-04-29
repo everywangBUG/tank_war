@@ -16,6 +16,6 @@ export default {
     ef: straw
   },
   straw: {
-    num: 20,
+    num: 50,
   }
 }

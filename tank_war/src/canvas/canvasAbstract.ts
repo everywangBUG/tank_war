@@ -1,5 +1,6 @@
 import config from "../config"
 import { imagePromise } from "../service/image"
+import Position from "../service/position"
 
 export default abstract class CanvasAbstract {
   constructor(
@@ -8,7 +9,6 @@ export default abstract class CanvasAbstract {
     protected ctx = canvas.getContext('2d')!,
   ) {
     this.createCanvas()
-    this.drawStraw(config.model.num)
   }
 
   protected createCanvas() {
@@ -19,39 +19,13 @@ export default abstract class CanvasAbstract {
     this.rootEl.insertAdjacentElement('afterbegin', this.canvas)
   }
 
-  protected async drawStraw(num: number, Model?: ModelConstructor) {
+  protected async drawStraw(num: number, Model: ModelConstructor) {
     await this.bootStrap()
-    this.positionCollection(num).forEach((position) => {
-      const instance = Model && new Model(this.ctx, position.x, position.y)
-      instance?.render()
+    const positionInstance = new Position()
+    positionInstance.getCollection(num).forEach((position) => {
+      const instance = new Model(this.ctx, position.x, position.y)
+      instance.render()
     })
-  }
-
-  protected positionCollection(num: number) {
-    const collection: {x: number, y: number}[] = []
-    for (let i = 0; i < num; i++) {
-      while(true) {
-        const position = this.position()
-        // 相邻横坐标相减的绝对值不能小于config.images.width，相邻纵坐标相减的绝对值不能小于config.images.height，不能超出root的边界
-        const exits = collection.some(item => {
-          const x = Math.abs(item.x - position.x)
-          const y = Math.abs(item.y - position.y)
-          return x < config.model.width / 2 || y < config.model.height / 2
-        })
-        if (!exits) {
-          collection.push(position)
-          break
-        }
-      }
-    }
-    return collection
-  }
-
-  protected position() {
-    return {
-      x: Math.floor((Math.random()* (config.root.width / config.model.width)) * config.model.width),
-      y: Math.floor((Math.random()* (config.root.height / config.model.height)) * config.model.height),
-    }
   }
 
   protected async bootStrap() {
