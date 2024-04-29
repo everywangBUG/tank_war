@@ -1,6 +1,5 @@
 import config from "../config"
-import { imagePromise } from "../service/image"
-import Position from "../service/position"
+import Position from "../service/Position"
 
 export default abstract class CanvasAbstract {
   protected models: IModel[] = []
@@ -19,13 +18,10 @@ export default abstract class CanvasAbstract {
   protected createCanvas() {
     this.canvas.width = config.root.width
     this.canvas.height = config.root.height
-    this.ctx.fillStyle = '#CAC7D5'
-    this.ctx.fillRect(0, 0, config.root.width, config.root.height)
     this.rootEl.insertAdjacentElement('afterbegin', this.canvas)
   }
 
-  protected async createModels() {
-    await this.bootStrap()
+  protected createModels() {
     const positionInstance = new Position()
     positionInstance.getCollection(this.num).forEach((position) => {
       const instance = new this.Model(this.ctx, position.x, position.y)
@@ -36,9 +32,4 @@ export default abstract class CanvasAbstract {
   protected renderModels() {
     this.models.forEach((model) => model.render())
   }
-
-  protected async bootStrap() {
-    await Promise.all(imagePromise)
-  }
-  
 }

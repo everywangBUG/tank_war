@@ -1,4 +1,4 @@
-import config from "../config"
+ import config from "../config"
 
 type PositionType = {x: number, y: number}
 export default class Position {
@@ -21,8 +21,8 @@ export default class Position {
 
   public position() {
     return {
-      x: Math.floor((Math.random()*(config.root.width / config.model.width))) * config.model.width,
-      y: Math.floor((Math.random()*(config.root.height / config.model.height - 5)) * config.model.height + config.model.height),
+      x: Math.floor(Math.random()*(config.root.width / config.model.width)) * config.model.width,
+      y: Math.floor(Math.random()*(config.root.height / config.model.height - 5) * config.model.height + config.model.height),
     }
   }
 }

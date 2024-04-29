@@ -1,4 +1,5 @@
 import straw from './statics/images/straw/straw.png'
+import wall from './statics/images/wall/wall.gif'
 
 export default {
   root: {
@@ -11,11 +12,14 @@ export default {
   },
   images: {
     straw,
-    ab: straw,
+    wall,
     cd: straw,
     ef: straw
   },
   straw: {
-    num: 50,
+    num: 100,
+  },
+  wall: {
+    num: 100,
   }
 }
