@@ -83,7 +83,6 @@ class BlackBoard {
       eraseBtn.style.marginTop = '10px'
       this.buttons?.insertAdjacentElement('beforeend', eraseBtn)
       eraseBtn.addEventListener('click', () => {
-        console.log(this.bgColor, '999')
         this.lineColor = this.bgColor
         this.ctx.lineWidth = 10
       })

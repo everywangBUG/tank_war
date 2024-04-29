@@ -1,10 +1,11 @@
-import CanvasAbstract from "../canvas/canvasAbstract"
+import CanvasAbstract from "./canvasAbstract"
 import config from "../config"
-import model from "../model/straw"
+import StrawModel from "../model/strawModel"
 
 class Straw extends CanvasAbstract {
-  render(): void {
-    super.drawStraw(config.straw.num, model)
+  constructor() {
+    super()
+    super.drawStraw(config.straw.num, StrawModel)
   }
 }
 

@@ -1,13 +1,14 @@
 import config from "../config"
-import { images,imagePromise } from "../service/image"
+import { imagePromise } from "../service/image"
 
-export default class CanvasAbstract {
+export default abstract class CanvasAbstract {
   constructor(
     protected rootEl = document.querySelector<HTMLDivElement>('#app')!,
     protected canvas = document.createElement('canvas')!,
     protected ctx = canvas.getContext('2d')!,
   ) {
     this.createCanvas()
+    this.drawStraw(config.model.num)
   }
 
   protected createCanvas() {
@@ -18,11 +19,11 @@ export default class CanvasAbstract {
     this.rootEl.insertAdjacentElement('afterbegin', this.canvas)
   }
 
-  protected async drawStraw(num: number, model: any) {
+  protected async drawStraw(num: number, Model?: ModelConstructor) {
     await this.bootStrap()
     this.positionCollection(num).forEach((position) => {
-      new model(this.ctx, position)
-      // this.ctx.drawImage(images.get('straw')!, x, y, config.model.width, config.model.height)
+      const instance = Model && new Model(this.ctx, position.x, position.y)
+      instance?.render()
     })
   }
 
@@ -31,7 +32,7 @@ export default class CanvasAbstract {
     for (let i = 0; i < num; i++) {
       while(true) {
         const position = this.position()
-        // 相邻横坐标相减的绝对值不能小于config.images.width，相邻纵坐标相减的绝对值不能小于config.images.height
+        // 相邻横坐标相减的绝对值不能小于config.images.width，相邻纵坐标相减的绝对值不能小于config.images.height，不能超出root的边界
         const exits = collection.some(item => {
           const x = Math.abs(item.x - position.x)
           const y = Math.abs(item.y - position.y)
