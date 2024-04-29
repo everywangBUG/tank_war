@@ -3,6 +3,11 @@ import { imagePromise } from "../service/image"
 import Position from "../service/position"
 
 export default abstract class CanvasAbstract {
+  protected models: IModel[] = []
+  abstract render(): void
+  abstract num: number
+  abstract Model: ModelConstructor
+
   constructor(
     protected rootEl = document.querySelector<HTMLDivElement>('#app')!,
     protected canvas = document.createElement('canvas')!,
@@ -19,13 +24,17 @@ export default abstract class CanvasAbstract {
     this.rootEl.insertAdjacentElement('afterbegin', this.canvas)
   }
 
-  protected async drawStraw(num: number, Model: ModelConstructor) {
+  protected async createModels() {
     await this.bootStrap()
     const positionInstance = new Position()
-    positionInstance.getCollection(num).forEach((position) => {
-      const instance = new Model(this.ctx, position.x, position.y)
-      instance.render()
+    positionInstance.getCollection(this.num).forEach((position) => {
+      const instance = new this.Model(this.ctx, position.x, position.y)
+      this.models.push(instance)
     })
+  }
+
+  protected renderModels() {
+    this.models.forEach((model) => model.render())
   }
 
   protected async bootStrap() {

@@ -3,9 +3,15 @@ import config from "../config"
 import StrawModel from "../model/strawModel"
 
 class Straw extends CanvasAbstract {
+  num: number = config.straw.num
+  Model: ModelConstructor = StrawModel
   constructor() {
     super()
-    super.drawStraw(config.straw.num, StrawModel)
+    this.render()
+  }
+  render(): void {
+    super.createModels()
+    super.renderModels()
   }
 }
 
