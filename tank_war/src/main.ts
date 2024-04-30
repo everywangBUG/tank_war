@@ -7,6 +7,7 @@ import Straw from "./canvas/Straw"
 import Wall from "./canvas/Wall"
 import Water from './canvas/Water'
 import Steel from './canvas/Steel'
+import Tank from './canvas/Tank'
 
 
 const app = document.querySelector<HTMLDivElement>('#app')!
@@ -19,6 +20,7 @@ function bootStrap() {
       Wall.render()
       Water.render()
       Steel.render()
+      Tank.render()
     })
 }
 bootStrap()

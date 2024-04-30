@@ -2,6 +2,7 @@ import straw from './statics/images/straw/straw.png'
 import wall from './statics/images/wall/wall.gif'
 import water from './statics/images/water/water.gif'
 import steel from './statics/images/wall/steels.gif'
+import tank from './statics/images/tank/left.gif'
 
 export default {
   root: {
@@ -17,6 +18,7 @@ export default {
     wall,
     water,
     steel,
+    tank,
   },
   straw: {
     num: 100,
@@ -25,9 +27,12 @@ export default {
     num: 100,
   },
   water:{
-    num: 20
+    num: 20,
   },
   steel: {
     num: 50,
+  },
+  tank: {
+    num: 10,
   }
 }
