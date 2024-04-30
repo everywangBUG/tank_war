@@ -12,6 +12,8 @@ class Tank extends CanvasAbstract {
   render(): void {
     this.createModels()
     super.renderModels()
+
+
   }
 
   protected createModels(): void {
