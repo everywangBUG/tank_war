@@ -8,7 +8,7 @@ export default class Position {
     for (let i = 0; i < num; i++) {
       while(true) {
         const position = this.position()
-          const exits = this.collection.some(item => item.x === position.x && item.y === position.y)
+        const exits = this.collection.some(item => item.x === position.x && item.y === position.y)
         if (!exits) {
           collection.push(position)
           this.collection.push(position)
@@ -22,7 +22,7 @@ export default class Position {
   public position() {
     return {
       x: Math.floor(Math.random()*(config.root.width / config.model.width)) * config.model.width,
-      y: Math.floor(Math.random()*(config.root.height / config.model.height - 5) * config.model.height + config.model.height),
+      y: Math.floor(Math.random()*(config.root.height / config.model.height - 5)) * config.model.height + config.model.height * 2,
     }
   }
 }

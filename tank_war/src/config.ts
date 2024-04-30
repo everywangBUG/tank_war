@@ -1,5 +1,7 @@
 import straw from './statics/images/straw/straw.png'
 import wall from './statics/images/wall/wall.gif'
+import water from './statics/images/water/water.gif'
+import steel from './statics/images/wall/steels.gif'
 
 export default {
   root: {
@@ -13,13 +15,19 @@ export default {
   images: {
     straw,
     wall,
-    cd: straw,
-    ef: straw
+    water,
+    steel,
   },
   straw: {
     num: 100,
   },
   wall: {
     num: 100,
+  },
+  water:{
+    num: 20
+  },
+  steel: {
+    num: 50,
   }
 }
