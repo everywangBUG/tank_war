@@ -15,7 +15,7 @@ class Tank extends CanvasAbstract {
 
     setInterval(() => {
       this.renderModels()
-    }, 100)
+    }, config.timeOut)
 
   }
 

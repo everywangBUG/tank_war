@@ -18,21 +18,38 @@ export default class TankModel extends ModelAbstract implements IModel {
 
   protected move() {
     this.canvas.clearRect(this.x, this.y, config.model.width, config.model.height)
-    switch(this.direction) {
-      case directionEnum.top:
-        this.y -= 2
+    while(true) {
+      let x = this.x
+      let y = this.y
+      switch(this.direction) {
+        case directionEnum.top:
+          y--
+          break
+        case directionEnum.right:
+          x++
+          break
+        case directionEnum.bottom:
+          y++
+          break
+        case directionEnum.left:
+          x--
+          break
+      }
+      if (this.isOut(x, y)) {
+        // 如果x，y不合法，随机改变方向
+        this.randomDirection()
+      } else {
+        // 如果x，y合法，退出循环
+        this.x = x
+        this.y = y
         break
-      case directionEnum.right:
-        this.x += 2
-        break
-      case directionEnum.bottom:
-        this.y += 2
-        break
-      case directionEnum.left:
-        this.x -= 2
-        break
+      }
     }
     super.draw()
+  }
+  
+  protected isOut(x: number, y: number) {
+    return x <= 0 || x + config.model.width > config.root.width || y <= 0 || y + config.model.height > config.root.height
   }
   
   // 随机坦克方向

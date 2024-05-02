@@ -8,6 +8,7 @@ import bottomTank from './statics/images/tank/bottom.gif'
 import topTank from './statics/images/tank/top.gif'
 
 export default {
+  timeOut: 10,
   root: {
     width: 1200,
     height: 800,
