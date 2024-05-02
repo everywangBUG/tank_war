@@ -2,7 +2,7 @@ import config from "../config"
 import Position from "../service/Position"
 
 export default abstract class CanvasAbstract {
-  protected models: IModel[] = []
+  public models: IModel[] = []
   abstract render(): void
   abstract num: number
   abstract Model: ModelConstructor

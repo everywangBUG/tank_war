@@ -3,6 +3,9 @@ import { images } from "../service/image";
 
 export default class WaterModel extends ModelAbstract implements IModel {
   name: string = 'wall'
+
+  render() {}
+
   images(): HTMLImageElement {
     return images.get('wall')!
   }
