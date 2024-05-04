@@ -6,6 +6,7 @@ import leftTank from './statics/images/tank/left.gif'
 import rightTank from './statics/images/tank/right.gif'
 import bottomTank from './statics/images/tank/bottom.gif'
 import topTank from './statics/images/tank/top.gif'
+import bullet from './statics/images/bullet/bullet.jpg'
 
 export default {
   timeOut: 5,
@@ -26,20 +27,21 @@ export default {
     rightTank,
     bottomTank,
     topTank,
+    bullet
   },
   straw: {
     num: 50,
   },
   wall: {
-    num: 20,
+    num: 50,
   },
   water:{
-    num: 20,
+    num: 40,
   },
   steel: {
     num: 30,
   },
   tank: {
-    num: 50,
+    num: 10,
   }
 }

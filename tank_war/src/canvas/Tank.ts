@@ -6,9 +6,6 @@ import Position from "../service/Position"
 class Tank extends CanvasAbstract {
   num: number = config.tank.num
   Model: ModelConstructor = TankModel
-  constructor() {
-    super()
-  }
   render(): void {
     this.createModels()
     this.renderModels()
