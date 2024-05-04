@@ -8,7 +8,7 @@ import bottomTank from './statics/images/tank/bottom.gif'
 import topTank from './statics/images/tank/top.gif'
 
 export default {
-  timeOut: 10,
+  timeOut: 5,
   root: {
     width: 1200,
     height: 800,
@@ -28,18 +28,18 @@ export default {
     topTank,
   },
   straw: {
-    num: 100,
+    num: 50,
   },
   wall: {
-    num: 100,
+    num: 20,
   },
   water:{
     num: 20,
   },
   steel: {
-    num: 50,
+    num: 30,
   },
   tank: {
-    num: 10,
+    num: 50,
   }
 }

@@ -5,16 +5,19 @@ import { directionEnum } from "../enum/directionEnum";
 export default abstract class ModelAbstract {
   abstract name: string
   abstract render(): void
-  protected direction: directionEnum = directionEnum.top
   abstract images(): HTMLImageElement
+  protected direction: directionEnum = directionEnum.top
+  public abstract canvas: ICanvas
+  public width = config.model.width
+  public height = config.model.height
 
 
-  constructor(protected canvas: CanvasRenderingContext2D, public x: number, public y: number ) {
+  constructor(public x: number, public y: number ) {
     this.randomDirection()
   }
   
   protected draw() {
-    this.canvas.drawImage(this.images(), this.x, this.y, config.model.width, config.model.height)
+    this.canvas.ctx.drawImage(this.images(), this.x, this.y, this.width, this.height)
   }
 
   protected randomDirection() {

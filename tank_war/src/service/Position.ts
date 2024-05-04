@@ -1,6 +1,6 @@
  import config from "../config"
 
-type PositionType = {x: number, y: number}
+export type PositionType = {x: number, y: number}
 export default class Position {
   collection: PositionType[] = []
   public getCollection(num: number) {
@@ -9,6 +9,7 @@ export default class Position {
       while(true) {
         const position = this.position()
         const exits = this.collection.some(item => item.x === position.x && item.y === position.y)
+        // position如果x或者y坐标重复，则不加入
         if (!exits) {
           collection.push(position)
           this.collection.push(position)

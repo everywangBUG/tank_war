@@ -4,10 +4,7 @@ import config from "../config"
 
 class Straw extends CanvasAbstract {
   num: number = config.straw.num
-  Model: ModelConstructor = StrawModel
-  constructor() {
-    super()
-  }
+  public Model: ModelConstructor = StrawModel
   render(): void {
     super.createModels()
     super.renderModels()

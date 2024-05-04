@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 
 interface ModelConstructor {
-  new (canvas: CanvasRenderingContext2D, x: number, y:  number): IModel
+  new (x: number, y:  number): IModel
 }
 
 interface IModel {
@@ -12,4 +12,10 @@ interface IModel {
   name:string
   x: number
   y: number
+}
+
+interface ICanvas {
+  Model: ModelConstructor
+  num: number
+  ctx: CanvasRenderingContext2D
 }

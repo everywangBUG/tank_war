@@ -5,16 +5,18 @@ import config from "../config";
 import Wall from "../canvas/Wall";
 import Steel from "../canvas/Steel";
 import Water from "../canvas/Water";
-import WaterModel from "./WallModel";
+import Tank from "../canvas/Tank";
 
 type tankDirection = keyof typeof config.images
 
 export default class TankModel extends ModelAbstract implements IModel {
-  width: number;
-  height: number;
+  public canvas: ICanvas = Tank
   name: string = 'Tank'
   render(): void {
     this.move()
+    if (Math.floor(Math.random() * 5) === 1) {
+      this.direction = directionEnum.bottom
+    }
   }
 
   images(): HTMLImageElement {
@@ -23,7 +25,7 @@ export default class TankModel extends ModelAbstract implements IModel {
 
 
   protected move() {
-    this.canvas.clearRect(this.x, this.y, config.model.width, config.model.height)
+    // this.canvas.canvas.clearRect(this.x, this.y, config.model.width, config.model.height)
     while(true) {
       let x = this.x
       let y = this.y
@@ -55,16 +57,16 @@ export default class TankModel extends ModelAbstract implements IModel {
   }
   
   protected isOut(x: number, y: number): boolean {
-    if (x <= 0 || x + config.model.width > config.root.width || y <= 0 || y + config.model.height > config.root.height) {
+    if (x < 0 || x + this.width > config.root.width || y < 0 || y + this.height > config.root.height) {
       return true
     }
     const models = [...Wall.models, ...Steel.models, ...Water.models]
 
     return models.some(model => {
       const state = 
-        x + config.model.width <= model.x ||
+        x + this.width <= model.x ||
         x >= model.x + model.width ||
-        y + config.model.height <= model.y ||
+        y + this.height <= model.y ||
         y >= model.y + model.height
 
         return !state

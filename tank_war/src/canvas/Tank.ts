@@ -23,10 +23,8 @@ class Tank extends CanvasAbstract {
     const positionInstance = new Position()
     for (let i = 0; i < this.num; i++) {
       const position = positionInstance.position()
-      const instance = new this.Model(this.ctx, position.x, 0)
-      const instance1 = new this.Model(this.ctx, position.x, config.model.height)
+      const instance = new this.Model(position.x, 0)
       this.models.push(instance)
-      this.models.push(instance1)
     }
   }
 
