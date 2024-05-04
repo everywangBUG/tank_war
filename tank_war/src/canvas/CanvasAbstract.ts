@@ -20,7 +20,7 @@ export default abstract class CanvasAbstract {
   protected createCanvas() {
     this.canvas.width = config.root.width
     this.canvas.height = config.root.height
-    console.log(this.name, '777')
+    this.canvas.setAttribute("name", this.name)
     this.rootEl.insertAdjacentElement('afterbegin', this.canvas)
   }
 
