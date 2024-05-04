@@ -11,4 +11,4 @@ class Straw extends CanvasAbstract {
   }
 }
 
-export default new Straw()
+export default new Straw("Straw")

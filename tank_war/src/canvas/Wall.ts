@@ -2,7 +2,7 @@ import CanvasAbstract from "./CanvasAbstract"
 import config from "../config"
 import WallModel from "../model/WallModel"
 
-class Straw extends CanvasAbstract {
+class Wall extends CanvasAbstract {
   num: number = config.wall.num
   Model: ModelConstructor = WallModel
   render(): void {
@@ -11,4 +11,4 @@ class Straw extends CanvasAbstract {
   }
 }
 
-export default new Straw()
+export default new Wall("Wall")

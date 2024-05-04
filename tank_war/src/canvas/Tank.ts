@@ -34,4 +34,4 @@ class Tank extends CanvasAbstract {
   }
 }
 
-export default new Tank()
+export default new Tank("Tank")

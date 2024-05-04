@@ -9,6 +9,7 @@ export default abstract class CanvasAbstract {
   collection = []
 
   constructor(
+    protected name: string,
     protected rootEl = document.querySelector<HTMLDivElement>('#app')!,
     protected canvas = document.createElement('canvas')!,
     public ctx = canvas.getContext('2d')!,
@@ -19,6 +20,7 @@ export default abstract class CanvasAbstract {
   protected createCanvas() {
     this.canvas.width = config.root.width
     this.canvas.height = config.root.height
+    console.log(this.name, '777')
     this.rootEl.insertAdjacentElement('afterbegin', this.canvas)
   }
 

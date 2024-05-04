@@ -2,7 +2,7 @@ import CanvasAbstract from "./CanvasAbstract"
 import config from "../config"
 import WaterModel from "../model/WaterModel"
 
-class Straw extends CanvasAbstract {
+class Water extends CanvasAbstract {
   num: number = config.water.num
   Model: ModelConstructor = WaterModel
   render(): void {
@@ -11,4 +11,4 @@ class Straw extends CanvasAbstract {
   }
 }
 
-export default new Straw()
+export default new Water("Water")

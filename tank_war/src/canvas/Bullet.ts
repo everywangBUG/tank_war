@@ -11,4 +11,4 @@ class Bullet extends CanvasAbstract {
   }
 }
 
-export default new Bullet()
+export default new Bullet("Bullet")
