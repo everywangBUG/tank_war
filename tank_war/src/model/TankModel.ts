@@ -41,7 +41,7 @@ export default class TankModel extends ModelAbstract implements IModel {
           x--
           break
       }
-      if (util.isModelOut(x, y)) {
+      if (util.isModelOut(x, y) || util.isCanvasOut(x, y)) {
         // 如果x，y不合法，随机改变方向
         this.randomDirection()
       } else {

@@ -24,7 +24,8 @@ export default abstract class ModelAbstract {
     this.direction = Object.keys(directionEnum)[Math.floor(Math.random() * 4)] as directionEnum
   }
 
-  protected destroyed() {
+  public destroyed() {
     this.canvas.removeModel(this)
+    this.canvas.ctx.clearRect(this.x, this.y, this.width, this.height)
   }
 }

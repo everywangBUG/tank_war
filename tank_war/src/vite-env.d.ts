@@ -18,6 +18,7 @@ interface IModel {
   x: number
   y: number
   direction: string
+  destroyed(): void
 }
 
 interface ICanvas {
