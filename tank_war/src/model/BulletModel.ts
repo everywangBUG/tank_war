@@ -13,6 +13,8 @@ export default class BulletModel extends ModelAbstract implements IModel {
   }
 
   render() {
+    let x = this.x
+    let y = this.y
     switch(this.direction) {
       case directionEnum.top:
         this.y -= 2

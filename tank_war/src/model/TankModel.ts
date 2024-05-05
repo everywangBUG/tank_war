@@ -2,10 +2,8 @@ import ModelAbstract from "./ModelAbstract";
 import { images } from '../service/image';
 import { directionEnum } from "../enum/directionEnum";
 import config from "../config";
-import Wall from "../canvas/Wall";
-import Steel from "../canvas/Steel";
-import Water from "../canvas/Water";
 import Tank from "../canvas/Tank";
+import util from "../util";
 
 type tankDirection = keyof typeof config.images
 
@@ -43,7 +41,7 @@ export default class TankModel extends ModelAbstract implements IModel {
           x--
           break
       }
-      if (this.isOut(x, y)) {
+      if (util.isModelOut(x, y)) {
         // 如果x，y不合法，随机改变方向
         this.randomDirection()
       } else {
@@ -54,23 +52,6 @@ export default class TankModel extends ModelAbstract implements IModel {
       }
     }
     super.draw()
-  }
-  
-  protected isOut(x: number, y: number): boolean {
-    if (x < 0 || x + this.width > config.root.width || y < 0 || y + this.height > config.root.height) {
-      return true
-    }
-    const models = [...Wall.models, ...Steel.models, ...Water.models]
-
-    return models.some(model => {
-      const state = 
-        x + this.width <= model.x ||
-        x >= model.x + model.width ||
-        y + this.height <= model.y ||
-        y >= model.y + model.height
-
-        return !state
-    })
   }
   
   protected draw() {
