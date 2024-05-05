@@ -13,10 +13,28 @@ export default class BulletModel extends ModelAbstract implements IModel {
   }
 
   render() {
-    super.draw()
+    switch(this.direction) {
+      case directionEnum.top:
+        this.y -= 2
+        break
+      case directionEnum.bottom:
+        this.y += 2
+        break
+      case directionEnum.left:
+        this.x -= 2
+        break
+      case directionEnum.right:
+        this.x += 2
+        break
+    }
+    this.draw()
   }
   
   images(): HTMLImageElement {
-    return images.get('water')!
+    return images.get('bullet')!
+  }
+
+  protected draw() {
+    this.canvas.ctx.drawImage(this.images(), this.x, this.y, 2, 2)
   }
 }

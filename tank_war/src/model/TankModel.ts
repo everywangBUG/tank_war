@@ -26,7 +26,6 @@ export default class TankModel extends ModelAbstract implements IModel {
 
 
   protected move() {
-    // this.canvas.canvas.clearRect(this.x, this.y, config.model.width, config.model.height)
     while(true) {
       let x = this.x
       let y = this.y
@@ -74,6 +73,10 @@ export default class TankModel extends ModelAbstract implements IModel {
     })
   }
   
+  protected draw() {
+    this.canvas.ctx.drawImage(this.images(), this.x, this.y, 2, 2)
+  }
+
   // 随机坦克方向
   protected randomImages() {
     let direction = this.direction

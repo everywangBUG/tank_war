@@ -6,8 +6,8 @@ export default abstract class ModelAbstract {
   abstract name: string
   abstract render(): void
   abstract images(): HTMLImageElement
-  public direction: directionEnum = directionEnum.top
-  public abstract canvas: ICanvas
+  abstract canvas: ICanvas
+  direction: directionEnum = directionEnum.top
   public width = config.model.width
   public height = config.model.height
 
