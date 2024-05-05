@@ -8,10 +8,10 @@ class Tank extends CanvasAbstract {
   Model: ModelConstructor = TankModel
   render(): void {
     this.createModels()
-    this.renderModels()
+    super.renderModels()
 
     setInterval(() => {
-      this.renderModels()
+      super.renderModels()
     }, config.timeOut)
 
   }
@@ -23,14 +23,6 @@ class Tank extends CanvasAbstract {
       const instance = new this.Model(position.x, 0)
       this.models.push(instance)
     }
-  }
-
-  protected renderModels() {
-    this.ctx.clearRect(0, 0, config.root.width, config.root.height)
-    this.models.forEach((model) => {
-      model.render()
-      this.ctx.drawImage(model.images(), model.x, model.y, config.model.width, config.model.height)
-    })
   }
 }
 

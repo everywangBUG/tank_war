@@ -4,10 +4,14 @@ interface ModelConstructor {
   new (x: number, y:  number): IModel
 }
 
+interface BulletModelConstructor {
+  new (tank: IModel): IModel
+}
+
 interface IModel {
   images(): HTMLImageElement
   render(): void
-  tank: IModel
+  tank?: IModel
   width: number
   height: number
   name:string
@@ -16,7 +20,7 @@ interface IModel {
 }
 
 interface ICanvas {
-  Model: ModelConstructor
+  Model: ModelConstructor | BulletModelConstructor
   num: number
   ctx: CanvasRenderingContext2D
 }

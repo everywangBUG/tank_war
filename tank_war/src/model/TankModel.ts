@@ -13,6 +13,7 @@ export default class TankModel extends ModelAbstract implements IModel {
   public canvas: ICanvas = Tank
   name: string = 'Tank'
   render(): void {
+    super.draw()
     this.move()
     if (Math.floor(Math.random() * 5) === 1) {
       this.direction = directionEnum.bottom

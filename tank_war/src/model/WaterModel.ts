@@ -6,7 +6,9 @@ export default class WallModel extends ModelAbstract implements IModel {
   public canvas: ICanvas = Water
   name: string = 'water'
 
-  render() {}
+  render() {
+    super.draw()
+  }
   
   images(): HTMLImageElement {
     return images.get('water')!

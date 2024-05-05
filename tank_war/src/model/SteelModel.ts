@@ -6,7 +6,9 @@ export default class StrawModel extends ModelAbstract implements IModel {
   public canvas: ICanvas = Steel
   name: string = 'steel'
 
-  render() {}
+  render() {
+    super.draw()
+  }
   
   images(): HTMLImageElement {
     return images.get('steel')!

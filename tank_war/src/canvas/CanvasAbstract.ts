@@ -5,7 +5,7 @@ export default abstract class CanvasAbstract {
   public models: IModel[] = []
   abstract render(): void
   abstract num: number
-  abstract Model: ModelConstructor
+  abstract Model: ModelConstructor | BulletModelConstructor
   collection = []
 
   constructor(
@@ -27,15 +27,14 @@ export default abstract class CanvasAbstract {
   protected createModels() {
     const positionInstance = new Position()
     positionInstance.getCollection(this.num).forEach((position) => {
-      const instance = new this.Model(position.x, position.y)
+      const model = this.Model as ModelConstructor
+      const instance = new model(position.x, position.y)
       this.models.push(instance)
     })
   }
 
-  protected renderModels() {
+  public renderModels() {
     this.ctx.clearRect(0, 0, config.root.width, config.root.height)
-    this.models.forEach((model) => {
-      this.ctx.drawImage(model.images(), model.x, model.y, config.model.width, config.model.height)
-    })
+    this.models.forEach((model) => model.render())
   }
 }
