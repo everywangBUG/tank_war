@@ -17,6 +17,7 @@ interface IModel {
   name:string
   x: number
   y: number
+  direction: string
 }
 
 interface ICanvas {

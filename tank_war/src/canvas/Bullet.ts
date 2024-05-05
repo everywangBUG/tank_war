@@ -2,6 +2,7 @@ import CanvasAbstract from "./CanvasAbstract"
 import config from "../config"
 import BulletModel from "../model/BulletModel"
 import Tank from "./Tank"
+import { BulletModelConstructor } from "../vite-env"
 
 class Bullet extends CanvasAbstract {
   intervalTime: number = 0
