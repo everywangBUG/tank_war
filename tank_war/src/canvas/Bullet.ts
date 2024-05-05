@@ -14,7 +14,11 @@ class Bullet extends CanvasAbstract {
 
   createBullet(): void {
     Tank.models.forEach((tank) => {
-      
+      const isExist = this.models.some(m => m.tank === tank)
+      // 如果坦克已经发射过子弹了则不需要发射
+      if (!isExist) {
+        this.models.push(new Bullet(tank))
+      }
     })
   }
 }

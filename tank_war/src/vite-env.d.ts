@@ -7,6 +7,7 @@ interface ModelConstructor {
 interface IModel {
   images(): HTMLImageElement
   render(): void
+  tank: IModel
   width: number
   height: number
   name:string
