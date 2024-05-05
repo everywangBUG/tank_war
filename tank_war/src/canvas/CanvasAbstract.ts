@@ -37,4 +37,8 @@ export default abstract class CanvasAbstract {
     this.ctx.clearRect(0, 0, config.root.width, config.root.height)
     this.models.forEach((model) => model.render())
   }
+
+  public removeModel(model: IModel) {
+    this.models = this.models.filter(item => item !== model)
+  }
 }

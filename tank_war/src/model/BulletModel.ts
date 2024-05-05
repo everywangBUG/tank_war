@@ -3,6 +3,7 @@ import { images } from "../service/image";
 import Bullet from "../canvas/Bullet";
 import config from "../config";
 import { directionEnum } from "../enum/directionEnum";
+import util from "../util";
 
 export default class BulletModel extends ModelAbstract implements IModel {
   public canvas: ICanvas = Bullet
@@ -17,19 +18,25 @@ export default class BulletModel extends ModelAbstract implements IModel {
     let y = this.y
     switch(this.direction) {
       case directionEnum.top:
-        this.y -= 2
+        y -= 2
         break
       case directionEnum.bottom:
-        this.y += 2
+        y += 2
         break
       case directionEnum.left:
-        this.x -= 2
+        x -= 2
         break
       case directionEnum.right:
-        this.x += 2
+        x += 2
         break
     }
-    this.draw()
+    if (util.isCanvasOut(x, y, 2, 2)) {
+      this.destroyed()
+    } else {
+      this.x = x
+      this.y = y
+      this.draw()
+    }
   }
   
   images(): HTMLImageElement {

@@ -23,7 +23,6 @@ class Bullet extends CanvasAbstract {
         this.models.push(new BulletModel(tank))
       }
     })
-    console.log(this.models, 'this.models')
   }
 
   stop() {
