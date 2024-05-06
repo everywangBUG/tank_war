@@ -9,6 +9,7 @@ import Water from './canvas/Water'
 import Steel from './canvas/Steel'
 import Tank from './canvas/Tank'
 import Bullet from './canvas/Bullet'
+import Boss from './canvas/Boss'
 
 
 const app = document.querySelector<HTMLDivElement>('#app')!
@@ -23,6 +24,7 @@ function bootStrap() {
       Steel.render()
       Tank.render()
       Bullet.render()
+      Boss.render()
     })
 }
 bootStrap()

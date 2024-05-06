@@ -16,7 +16,7 @@ class Tank extends CanvasAbstract {
 
   }
 
-  protected createModels(): void {
+  createModels(): void {
     const positionInstance = new Position()
     for (let i = 0; i < this.num; i++) {
       const position = positionInstance.position()

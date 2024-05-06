@@ -12,7 +12,7 @@ class Bullet extends CanvasAbstract {
     this.intervalTime = setInterval(() => {
       this.createBullet()
       this.renderModels()
-    }, 50)
+    }, 30)
   }
   
   createBullet() {

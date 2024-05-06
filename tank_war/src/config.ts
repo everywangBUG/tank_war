@@ -7,9 +7,10 @@ import rightTank from './statics/images/tank/right.gif'
 import bottomTank from './statics/images/tank/bottom.gif'
 import topTank from './statics/images/tank/top.gif'
 import bullet from './statics/images/bullet/bullet.jpg'
+import boss from './statics/images/boss/boss.png'
 
 export default {
-  timeOut: 5,
+  timeOut: 10,
   root: {
     width: 1200,
     height: 800,
@@ -27,7 +28,8 @@ export default {
     rightTank,
     bottomTank,
     topTank,
-    bullet
+    bullet,
+    boss
   },
   straw: {
     num: 50,
