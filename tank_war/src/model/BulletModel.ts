@@ -6,6 +6,7 @@ import { directionEnum } from "../enum/directionEnum";
 import util from "../util";
 import Wall from "../canvas/Wall";
 import Boss from "../canvas/Boss";
+import Steel from "../canvas/Steel";
 
 export default class BulletModel extends ModelAbstract implements IModel {
   public canvas: ICanvas = Bullet
@@ -20,20 +21,21 @@ export default class BulletModel extends ModelAbstract implements IModel {
     let y = this.y
     switch(this.direction) {
       case directionEnum.top:
-        y -= 2
+        y -= config.bullet.speed
         break
       case directionEnum.bottom:
-        y += 2
+        y += config.bullet.speed
         break
       case directionEnum.left:
-        x -= 2
+        x -= config.bullet.speed
         break
       case directionEnum.right:
-        x += 2
+        x += config.bullet.speed
         break
     }
     const touchModel = util.isModelOut(x, y, 2, 2, [...Wall.models, ...Boss.models])
-    if (util.isCanvasOut(x, y, 2, 2)) {
+    const touchSteel = util.isModelOut(x, y, 2, 2, Steel.models)
+    if (util.isCanvasOut(x, y, 2, 2) || touchSteel) {
       this.destroyed()
     } else if (touchModel) {
       this.destroyed()  
