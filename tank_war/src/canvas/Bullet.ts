@@ -5,12 +5,12 @@ import Tank from "./Tank"
 import Player from "./Player"
 
 class Bullet extends CanvasAbstract {
-  intervalTime: number = 0
+  intervalId: number = 0
   num: number = config.water.num
   Model: BulletModelConstructor = BulletModel
   
   render(): void {
-    this.intervalTime = setInterval(() => {
+    this.intervalId = setInterval(() => {
       this.createBullet()
       this.renderModels()
     }, 30)
@@ -27,7 +27,7 @@ class Bullet extends CanvasAbstract {
   }
 
   stop() {
-    clearInterval(this.intervalTime)
+    clearInterval(this.intervalId)
   }
 
   addPlayBullet() {

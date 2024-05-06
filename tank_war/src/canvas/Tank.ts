@@ -6,14 +6,19 @@ import Position from "../service/Position"
 class Tank extends CanvasAbstract {
   num: number = config.tank.num
   Model: ModelConstructor = TankModel
+  intervalId: number = 0
   render(): void {
     this.createModels()
     super.renderModels()
 
-    setInterval(() => {
+    this.intervalId = setInterval(() => {
       super.renderModels()
     }, config.timeOut)
 
+  }
+
+  stop(): void {
+    clearInterval(this.intervalId)
   }
 
   createModels(): void {

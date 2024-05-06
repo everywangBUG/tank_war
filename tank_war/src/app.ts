@@ -19,11 +19,29 @@ app.style.height = config.root.height + 'px'
 
 export default {
   isStart: false,
+  state: 0, // 0 未开始 1 游戏失败 2 游戏成功
+  intervalId: 0,
   bootStrap() {
     if (this.isStart) return
-    app.addEventListener('click', this.start.bind(this))
+    app.addEventListener('click', async () => {
+      await this.start()
+      this.intervalId = setInterval(() => {
+        if (Player.models.length === 0 || Boss.models.length === 0)  {
+          this.state = 1
+          this.stop()
+        }
+        if (Tank.models.length === 0) {
+          this.state = 2
+          this.stop()
+        }
+      }, 100)
+    })
   },
-  stop() {},
+  stop() {
+    clearInterval(this.intervalId)
+    Tank.stop()
+    Bullet.stop()
+  },
   async start() {
     this.isStart = true
     app.style.backgroundImage = 'none'
