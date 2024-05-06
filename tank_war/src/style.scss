@@ -7,6 +7,8 @@ body {
   background-color: #fefefe;
   #app {
     position: relative;
+    background: no-repeat center url('../src/statics/images/cover/cover.png');
+    cursor: pointer;
     background-color: #000;
     border: 10px solid #333;
     box-sizing: content-box;
