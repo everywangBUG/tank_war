@@ -8,11 +8,15 @@ type PlayerTank = keyof typeof config.images
 
 export default class PlayerModel extends ModelAbstract implements IModel {
   public canvas: ICanvas = Player
+  bindEvent: boolean = false
   name: string = 'Player'
 
   render() {
     super.draw()
-    document.addEventListener('keydown', this.changeDirection.bind(this))
+    if (!this.bindEvent) {
+      this.bindEvent = true
+      document.addEventListener('keydown', this.changeDirection.bind(this))
+    }
   }
 
   changeDirection(event: KeyboardEvent) {
