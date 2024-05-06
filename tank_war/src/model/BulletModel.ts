@@ -7,6 +7,8 @@ import util from "../util";
 import Wall from "../canvas/Wall";
 import Boss from "../canvas/Boss";
 import Steel from "../canvas/Steel";
+import Tank from "../canvas/Tank";
+import Player from "../canvas/Player";
 
 export default class BulletModel extends ModelAbstract implements IModel {
   public canvas: ICanvas = Bullet
@@ -34,11 +36,11 @@ export default class BulletModel extends ModelAbstract implements IModel {
         x += step
         break
     }
-    const touchModel = util.isModelOut(x, y, 2, 2, [...Wall.models, ...Boss.models])
+    const touchModel = util.isModelOut(x, y, 2, 2, [...Wall.models, ...Boss.models, ...Tank.models, ...Player.models])
     const touchSteel = util.isModelOut(x, y, 2, 2, Steel.models)
     if (util.isCanvasOut(x, y, 2, 2) || touchSteel) {
       this.destroyed()
-    } else if (touchModel) {
+    } else if (touchModel && touchModel.name !== this.tank.name) {
       this.destroyed()  
       touchModel.destroyed()
     } else {
