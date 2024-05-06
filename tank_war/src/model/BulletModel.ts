@@ -19,18 +19,19 @@ export default class BulletModel extends ModelAbstract implements IModel {
   render() {
     let x = this.x
     let y = this.y
+    let step = this.name === 'bullet' ? config.bullet.speed : config.bullet.speed * 2
     switch(this.direction) {
       case directionEnum.top:
-        y -= config.bullet.speed
+        y -= step
         break
       case directionEnum.bottom:
-        y += config.bullet.speed
+        y += step
         break
       case directionEnum.left:
-        x -= config.bullet.speed
+        x -= step
         break
       case directionEnum.right:
-        x += config.bullet.speed
+        x += step
         break
     }
     const touchModel = util.isModelOut(x, y, 2, 2, [...Wall.models, ...Boss.models])

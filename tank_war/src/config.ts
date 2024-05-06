@@ -58,6 +58,6 @@ export default {
     speed: 10
   },
   bullet: {
-    speed: 10
+    speed: 5
   }
 }
