@@ -1,7 +1,6 @@
 import Boss from "./canvas/Boss"
 import Steel from "./canvas/Steel"
 import Wall from "./canvas/Wall"
-import Water from "./canvas/Water"
 import config from "./config"
 
 export default {

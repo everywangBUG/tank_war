@@ -8,6 +8,10 @@ import bottomTank from './statics/images/tank/bottom.gif'
 import topTank from './statics/images/tank/top.gif'
 import bullet from './statics/images/bullet/bullet.jpg'
 import boss from './statics/images/boss/boss.png'
+import leftPlayer from './statics/images/player/left.gif'
+import rightPlayer from './statics/images/player/right.gif'
+import bottomPlayer from './statics/images/player/bottom.gif'
+import topPlayer from './statics/images/player/top.gif'
 
 export default {
   timeOut: 10,
@@ -29,7 +33,11 @@ export default {
     bottomTank,
     topTank,
     bullet,
-    boss
+    boss,
+    leftPlayer,
+    rightPlayer,
+    bottomPlayer,
+    topPlayer,
   },
   straw: {
     num: 50,

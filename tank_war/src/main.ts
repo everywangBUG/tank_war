@@ -10,6 +10,7 @@ import Steel from './canvas/Steel'
 import Tank from './canvas/Tank'
 import Bullet from './canvas/Bullet'
 import Boss from './canvas/Boss'
+import Player from './canvas/Play'
 
 
 const app = document.querySelector<HTMLDivElement>('#app')!
@@ -25,6 +26,7 @@ function bootStrap() {
       Tank.render()
       Bullet.render()
       Boss.render()
+      Player.render()
     })
 }
 bootStrap()
