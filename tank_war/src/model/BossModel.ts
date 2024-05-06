@@ -4,13 +4,13 @@ import Boss from "../canvas/Boss";
 
 export default class BossModel extends ModelAbstract implements IModel {
   public canvas: ICanvas = Boss
-  name: string = 'boss'
+  name: 'boss' = 'boss'
 
   render() {
     super.draw()
   }
 
   images(): HTMLImageElement {
-    return images.get('boss')!
+    return images.get(this.name)!
   }
 }

@@ -4,13 +4,13 @@ import Wall from "../canvas/Wall";
 
 export default class WaterModel extends ModelAbstract implements IModel {
   public canvas: ICanvas = Wall
-  name: string = 'wall'
+  name: 'wall' = 'wall'
 
   render() {
     super.draw()
   }
 
   images(): HTMLImageElement {
-    return images.get('wall')!
+    return images.get(this.name)!
   }
 }

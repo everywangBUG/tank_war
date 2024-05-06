@@ -4,13 +4,13 @@ import Straw from "../canvas/Straw";
 
 export default class StrawModel extends ModelAbstract implements IModel {
   public canvas: ICanvas = Straw
-  name: string = 'straw'
+  name: 'straw' = 'straw'
 
   render() {
     super.draw()
   }
 
   images(): HTMLImageElement {
-    return images.get('straw')!
+    return images.get(this.name)!
   }
 }

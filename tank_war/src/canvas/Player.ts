@@ -1,5 +1,5 @@
 import CanvasAbstract from "./CanvasAbstract"
-import PlayerModel from "../model/PlayModel"
+import PlayerModel from "../model/PlayerModel"
 import config from "../config"
 
 class Player extends CanvasAbstract {

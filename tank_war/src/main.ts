@@ -10,7 +10,7 @@ import Steel from './canvas/Steel'
 import Tank from './canvas/Tank'
 import Bullet from './canvas/Bullet'
 import Boss from './canvas/Boss'
-import Player from './canvas/Play'
+import Player from './canvas/Player'
 
 
 const app = document.querySelector<HTMLDivElement>('#app')!

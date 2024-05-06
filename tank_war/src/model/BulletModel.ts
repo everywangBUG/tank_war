@@ -9,7 +9,7 @@ import Boss from "../canvas/Boss";
 
 export default class BulletModel extends ModelAbstract implements IModel {
   public canvas: ICanvas = Bullet
-  name: string = 'bullet'
+  name: 'bullet' = 'bullet'
   constructor(public tank: IModel) {
     super(tank.x + config.model.width / 2, tank.y + config.model.height / 2)  
     this.direction = tank.direction as unknown as directionEnum
@@ -46,7 +46,7 @@ export default class BulletModel extends ModelAbstract implements IModel {
   }
   
   images(): HTMLImageElement {
-    return images.get('bullet')!
+    return images.get(this.name)!
   }
 
   protected draw() {
