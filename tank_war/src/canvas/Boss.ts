@@ -3,7 +3,7 @@ import BossModel from "../model/BossModel"
 import config from "../config"
 
 class Boss extends CanvasAbstract {
-  num: number = config.straw.num
+  num: number = 1
   public Model: ModelConstructor = BossModel
   render(): void {
     this.createBoss()

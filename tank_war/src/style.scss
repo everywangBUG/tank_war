@@ -4,10 +4,12 @@ body {
   width: 100vw;
   justify-content: center;
   align-items: center;
-  background-color: #000;
+  background-color: #fefefe;
   #app {
     position: relative;
-    background-color: #2b2b2b;
+    background-color: #000;
+    border: 10px solid #333;
+    box-sizing: content-box;
     canvas {
       position: absolute;
     }

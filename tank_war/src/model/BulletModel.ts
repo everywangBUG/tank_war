@@ -4,8 +4,8 @@ import Bullet from "../canvas/Bullet";
 import config from "../config";
 import { directionEnum } from "../enum/directionEnum";
 import util from "../util";
-import Straw from "../canvas/Straw";
 import Wall from "../canvas/Wall";
+import Boss from "../canvas/Boss";
 
 export default class BulletModel extends ModelAbstract implements IModel {
   public canvas: ICanvas = Bullet
@@ -32,11 +32,11 @@ export default class BulletModel extends ModelAbstract implements IModel {
         x += 2
         break
     }
-    const touchModel = util.isModelOut(x, y, 2, 2, [...Straw.models, ...Wall.models])
+    const touchModel = util.isModelOut(x, y, 2, 2, [...Wall.models, ...Boss.models])
     if (util.isCanvasOut(x, y, 2, 2)) {
       this.destroyed()
     } else if (touchModel) {
-      this.destroyed()
+      this.destroyed()  
       touchModel.destroyed()
     } else {
       this.x = x
