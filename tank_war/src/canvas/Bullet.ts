@@ -2,6 +2,7 @@ import CanvasAbstract from "./CanvasAbstract"
 import config from "../config"
 import BulletModel from "../model/BulletModel"
 import Tank from "./Tank"
+import Player from "./Player"
 
 class Bullet extends CanvasAbstract {
   intervalTime: number = 0
@@ -27,6 +28,10 @@ class Bullet extends CanvasAbstract {
 
   stop() {
     clearInterval(this.intervalTime)
+  }
+
+  addPlayBullet() {
+    this.models.push(new BulletModel(Player.models[0]))
   }
 }
 

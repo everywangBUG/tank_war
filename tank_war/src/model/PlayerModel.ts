@@ -7,6 +7,7 @@ import util from "../util";
 import Steel from "../canvas/Steel";
 import Wall from "../canvas/Wall";
 import Tank from "../canvas/Tank";
+import Bullet from "../canvas/Bullet";
 
 type PlayerTank = keyof typeof config.images
 
@@ -21,9 +22,14 @@ export default class PlayerModel extends ModelAbstract implements IModel {
       this.bindEvent = true
       document.addEventListener('keydown', this.changeDirection.bind(this))
       document.addEventListener('keydown', this.move.bind(this))
+      document.addEventListener('keydown', (event) => {
+        if (event.code === 'Space') {
+          Bullet.addPlayBullet()
+        }
+      })
     }
   }
-
+  
   changeDirection(event: KeyboardEvent) {
     switch(event.code) {
       case 'ArrowUp':
