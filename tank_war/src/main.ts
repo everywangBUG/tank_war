@@ -19,6 +19,7 @@ app.style.height = config.root.height + 'px'
 
 function bootStrap() {
     Promise.all(imagePromise).then(() => {
+      Player.render()
       Straw.render()
       Wall.render()
       Water.render()
@@ -26,7 +27,6 @@ function bootStrap() {
       Tank.render()
       Bullet.render()
       Boss.render()
-      Player.render()
     })
 }
 bootStrap()

@@ -53,5 +53,11 @@ export default {
   },
   tank: {
     num: 10,
+  },
+  player: {
+    speed: 10
+  },
+  bullet: {
+    speed: 10
   }
 }
