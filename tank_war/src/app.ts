@@ -11,7 +11,7 @@ import Tank from './canvas/Tank'
 import Bullet from './canvas/Bullet'
 import Boss from './canvas/Boss'
 import Player from './canvas/Player'
-
+import audio from './service/audio'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 app.style.width = config.root.width + 'px'
@@ -22,7 +22,6 @@ export default {
   state: 0, // 0 未开始 1 游戏失败 2 游戏成功
   intervalId: 0,
   bootStrap() {
-    if (this.isStart) return
     app.addEventListener('click', async () => {
       await this.start()
       this.intervalId = setInterval(() => {
@@ -43,7 +42,9 @@ export default {
     Bullet.stop()
   },
   async start() {
+    if (this.isStart) return
     this.isStart = true
+    audio.start()
     app.style.backgroundImage = 'none'
     Promise.all(imagePromise).then(() => {
       Player.render()
