@@ -37,12 +37,13 @@ export default class BulletModel extends ModelAbstract implements IModel {
         break
     }
     const touchModel = util.isModelOut(x, y, 2, 2, [...Wall.models, ...Boss.models, ...Tank.models, ...Player.models])
-    const touchSteel = util.isModelOut(x, y, 2, 2, Steel.models)
-    if (util.isCanvasOut(x, y, 2, 2) || touchSteel) {
+    // 边缘检测
+    if (util.isCanvasOut(x, y, 2, 2)) {
       this.destroyed()
     } else if (touchModel && touchModel.name !== this.tank.name) {
       this.destroyed()  
-      touchModel.destroyed()
+      if (touchModel.name !== 'steel') touchModel.destroyed(); // 钢板被子弹击中后消失
+      this.blast(touchModel)
     } else {
       this.x = x
       this.y = y

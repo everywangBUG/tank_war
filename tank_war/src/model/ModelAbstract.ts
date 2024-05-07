@@ -28,4 +28,19 @@ export default abstract class ModelAbstract {
     this.canvas.removeModel(this)
     this.canvas.ctx.clearRect(this.x, this.y, this.width, this.height)
   }
+
+  protected blast(model: IModel) {
+    Array.from({length: 8}, (_, i) => i + 1).reduce((promise, index) => {
+      return new Promise((resolve) =>
+        setTimeout(() => {
+          const img = new Image()
+          img.src = `/src/statics/images/blasts/blast${index}.gif`
+          img.onload = () => {
+            this.canvas.ctx.drawImage(img, model.x, model.y, model.width, model.height)
+          }
+          resolve(promise)
+        }, 100)
+      )
+    }, Promise.resolve())
+  }
 }

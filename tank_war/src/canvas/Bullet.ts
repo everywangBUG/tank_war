@@ -3,6 +3,7 @@ import config from "../config"
 import BulletModel from "../model/BulletModel"
 import Tank from "./Tank"
 import Player from "./Player"
+import audio from "../service/audio"
 
 class Bullet extends CanvasAbstract {
   intervalId: number = 0
@@ -32,6 +33,7 @@ class Bullet extends CanvasAbstract {
 
   addPlayBullet() {
     this.models.push(new BulletModel(Player.models[0]))
+    audio.fire()
   }
 }
 

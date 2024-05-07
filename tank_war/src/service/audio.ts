@@ -7,5 +7,8 @@ export default {
   },
   fire() {
     this.el('aFire').play()
+  },
+  blast() {
+    this.el('aBlast').play()
   }
 }
