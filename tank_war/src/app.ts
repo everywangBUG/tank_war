@@ -40,6 +40,17 @@ export default {
     clearInterval(this.intervalId)
     Tank.stop()
     Bullet.stop()
+    this.text()
+  },
+  text() {
+    const canvas = document.createElement('canvas')
+    canvas.width = config.root.width
+    canvas.height = config.root.height
+    const ctx = canvas.getContext('2d')!
+    ctx.font = '40px Arial'
+    ctx.fillStyle = 'red'
+    ctx?.fillText(this.state === 1 ? '游戏失败' : '游戏成功', config.root.width / 2, config.root.height / 2)
+    app.insertAdjacentElement('beforeend', canvas)
   },
   async start() {
     if (this.isStart) return

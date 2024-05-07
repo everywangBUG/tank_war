@@ -52,7 +52,7 @@ export default {
     num: 30,
   },
   tank: {
-    num: 10,
+    num: 1,
   },
   player: {
     speed: 10

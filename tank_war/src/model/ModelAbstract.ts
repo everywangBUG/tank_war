@@ -1,5 +1,6 @@
 import config from "../config";
 import { directionEnum } from "../enum/directionEnum";
+import audio from "../service/audio";
 
 
 export default abstract class ModelAbstract {
@@ -30,6 +31,7 @@ export default abstract class ModelAbstract {
   }
 
   protected blast(model: IModel) {
+    audio.blast()
     Array.from({length: 8}, (_, i) => i + 1).reduce((promise, index) => {
       return new Promise((resolve) =>
         setTimeout(() => {
